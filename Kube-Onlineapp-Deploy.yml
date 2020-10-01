@@ -1,0 +1,12 @@
+---
+- name: Create pods using deployment 
+  hosts: ITLPVEB002
+  become: true
+  user: ITLTSG
+ 
+  tasks: 
+  - name: create a deployment
+    command: sudo kubectl apply -f /app/Play/Onlineapp-Deployment.yml
+ 
+  - name: update deployment with new pods if image updated in docker hub
+    command: sudo kubectl rollout restart deployment.apps/onlineapp-deployment

@@ -1,0 +1,9 @@
+---
+- name: create service for deployment
+  hosts: ITLPVEB002
+  become: true
+  user: ITLTSG
+
+  tasks:
+  - name: create a service
+    command: sudo kubectl apply -f /app/Play/Onlineapp-Service.yml
